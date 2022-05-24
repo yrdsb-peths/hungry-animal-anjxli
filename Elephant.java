@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Elephant extends Actor
 {
+    GreenfootSound elephantNoise = new GreenfootSound();
+    GreenfootImage 
     public void act()
     {
       if(Greenfoot.isKeyDown("a"))
@@ -31,6 +33,7 @@ public class Elephant extends Actor
             MyWorld world = (MyWorld)getWorld();
             world.spawnFries();
             world.increaseScore();
+            elephantNoise();
         }
         
     }
