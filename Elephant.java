@@ -8,7 +8,15 @@ public class Elephant extends Actor
       {
           move(-3);
       }
-      if(Greenfoot.isKeyDown("d"))
+      else if(Greenfoot.isKeyDown("d"))
+      {
+          move(3);
+      }
+      if(Greenfoot.isKeyDown("left"))
+      {
+          move(-3);
+      }
+      else if(Greenfoot.isKeyDown("right"))
       {
           move(3);
       }
@@ -21,7 +29,8 @@ public class Elephant extends Actor
         {
             removeTouching(Fries.class);
             MyWorld world = (MyWorld)getWorld();
-            world.spawnApple();
+            world.spawnFries();
+            world.increaseScore();
         }
         
     }
