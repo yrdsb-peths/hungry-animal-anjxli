@@ -2,6 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Fries extends Actor
 {
+    int speed = 1;
     public void act()
     {
         int x = getX();
@@ -15,5 +16,9 @@ public class Fries extends Actor
             world.gameOver();
             world.removeObject(this);
         }
+    }
+    public void setSpeed(int spd)
+    {
+        speed = spd;
     }
 }
