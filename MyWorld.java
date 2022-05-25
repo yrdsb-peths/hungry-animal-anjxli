@@ -16,13 +16,19 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, false); 
         // Create elephant object
-        Elephant e = new Elephant();
-        addObject(e, 300, 350);
-        //Create a label
-        scoreLabel = new Label(0, 100);
-        addObject(scoreLabel, 50, 50);
         
-        spawnFries();
+        TitleScreen titlescn = new TitleScreen();
+        Greenfoot.setWorld(titlescn);
+        if(Greenfoot.isKeyDown("space"))
+        {
+            Elephant e = new Elephant();
+            addObject(e, 300, 350);
+            //Create a label
+            scoreLabel = new Label(0, 100);
+            addObject(scoreLabel, 50, 50);
+            
+            spawnFries();
+        }
     }
     //end game when the fries aren't eaten
     public void gameOver()
@@ -55,4 +61,5 @@ public class MyWorld extends World
         addObject(fries, x, y);
         
     }
+    
 }
