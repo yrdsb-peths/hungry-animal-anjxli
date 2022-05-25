@@ -2,17 +2,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Elephant extends Actor
 {
-    GreenfootSound elephantNoise = new GreenfootSound("name of the file");
-    GreenfootImage[] elephantPic = new GreenfootImage[7];
+    GreenfootSound elephantNoise = new GreenfootSound("elephantcub.mp3");
+    GreenfootImage[] elephantPicRight = new GreenfootImage[7];
+    GreenfootImage[] elephantPicLeft = new GreenfootImage[7];
+    
+    //Driection of the elephant is facing
+    String facing = "right";
+    SimpleTimer animationTimer = new SimpleTimer();
     
     // constructor
     public Elephant()
     {
-        for(int i = 0; i < elephantPic.length; i++)
+        for(int i = 0; i < elephantPicRight.length; i++)
         {
-            elephantPic[i] = new GreenfootImage("tile" + i + ".png");
+            elephantPicRight[i] = new GreenfootImage("images/tile" + i + ".png");
+            elephantPicRight[i].scale(100, 125);
         }
-        setImage(elephantPic[0]);
+        
+        for(int i = 0; i< elephantPicLeft.length; i++)
+        {
+            elephantPicLeft[i] = new GreenfootImage("images/tile" + i + ".png");
+            elephantPicLeft[i].mirrorHorizontally();
+            elephantPicLeft[i].scale(100, 125);
+        }
+        animationTimer.mark();
+        
+        //Intial elephant image
+        setImage(elephantPicRight[0]);
         
     }
     
@@ -20,8 +36,22 @@ public class Elephant extends Actor
     int imageIndex = 0;
     public void animateElephant()
     {
-        setImage(elephantPic[imageIndex]);
-        imageIndex = (imageIndex + 1) % elephantPic.length;
+        if(animationTimer.millisElapsed() < 200)
+        {
+            return;
+        }
+        animationTimer.mark();
+        if(facing.equals("right"))
+        {
+            setImage(elephantPicRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % elephantPicRight.length;
+        }
+        else
+        {
+           setImage(elephantPicLeft[imageIndex]);
+           imageIndex = (imageIndex + 1) % elephantPicLeft.length; 
+        }
+        
     }
     
     public void act()
@@ -29,18 +59,22 @@ public class Elephant extends Actor
       if(Greenfoot.isKeyDown("a"))
       {
           move(-3);
+          facing = "left";
       }
       else if(Greenfoot.isKeyDown("d"))
       {
           move(3);
+          facing = "right";
       }
       if(Greenfoot.isKeyDown("left"))
       {
           move(-3);
+          facing = "left";
       }
       else if(Greenfoot.isKeyDown("right"))
       {
           move(3);
+          facing = "right";
       }
       eat();
       //animate the elephant
@@ -55,7 +89,7 @@ public class Elephant extends Actor
             MyWorld world = (MyWorld)getWorld();
             world.spawnFries();
             world.increaseScore();
-            elephantNoise();
+            elephantNoise.play();
         }
         
     }
