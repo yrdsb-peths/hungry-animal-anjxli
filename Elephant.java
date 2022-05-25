@@ -3,14 +3,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elephant extends Actor
 {
     GreenfootSound elephantNoise = new GreenfootSound("name of the file");
-    GreenfootImage[] elephantPic = new GreenfootImage[8];
+    GreenfootImage[] elephantPic = new GreenfootImage[7];
     
     // constructor
     public Elephant()
     {
         for(int i = 0; i < elephantPic.length; i++)
         {
-            elephantPic[i] = new GreenfootImage("name of the file" + i + ".png");
+            elephantPic[i] = new GreenfootImage("tile" + i + ".png");
         }
         setImage(elephantPic[0]);
         
