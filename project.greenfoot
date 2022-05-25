@@ -1,8 +1,8 @@
 #Greenfoot project file
 class.Elephant.image=tile0.png.png
 class.Fries.image=chips-2.png
-class.MyWorld.image=17017788.jpg
-class.TitleScreen.image=space.jpg
+class.MyWorld.image=e4d1c1023007831dc4d45cf849703a38.jpg
+class.TitleScreen.image=wet-blue.jpg
 dependency1.from=MyWorld
 dependency1.to=Label
 dependency1.type=UsesDependency
